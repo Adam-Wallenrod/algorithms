@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class QuickSortPageComponent implements OnInit {
 
-  arrayToSort: number[] = [7, 32, 2, 1, 4, 4, 8 , 6, 7, 3, 5];
+  arrayToSort: number[] = [7, 32, 2, 11, 1, 4, 4, 8, 6, 7, 3, 5];
   sortedArray: number[];
 
   constructor() {
@@ -26,7 +26,6 @@ export class QuickSortPageComponent implements OnInit {
 
     console.log('pivotIndex: ', pivotIndex);
     console.log('pivot: ', pivot);
-    // console.log('array without pivot: ', arrayCopy);
 
     let i = -1;
     let j = 0;
@@ -49,7 +48,6 @@ export class QuickSortPageComponent implements OnInit {
 
     }
 
-    console.log('arrayCopy: ', arrayCopy);
 
     const leftSide = arrayCopy.slice(0, (i + 1));
     const rightSide = arrayCopy.slice((i + 1), arrayCopy.length);
