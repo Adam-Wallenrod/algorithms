@@ -8,6 +8,7 @@ import { BucketSortPageComponent } from './sorting/pages/bucket-sort-page/bucket
 import { HeapSortPageComponent } from './sorting/pages/heap-sort-page/heap-sort-page.component';
 import { CountingSortPageComponent } from './sorting/pages/counting-sort-page/counting-sort-page.component';
 import {AppRoutingModule} from './app-routing.module';
+import { InsertSortPageComponent } from './sorting/pages/insert-sort/insert-sort-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {AppRoutingModule} from './app-routing.module';
     QuickSortPageComponent,
     BucketSortPageComponent,
     HeapSortPageComponent,
-    CountingSortPageComponent
+    CountingSortPageComponent,
+    InsertSortPageComponent
   ],
   imports: [
     BrowserModule,
