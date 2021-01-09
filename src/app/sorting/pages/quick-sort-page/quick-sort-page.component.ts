@@ -7,14 +7,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class QuickSortPageComponent implements OnInit {
 
-  arrayToSort: number[] = [7, 2, 1, 4, 8, 6, 3, 5];
+  arrayToSort: number[] = [7, 32, 2, 1, 4, 4, 8 , 6, 7, 3, 5];
   sortedArray: number[];
 
   constructor() {
   }
 
   ngOnInit() {
-    this.sortedArray =  this.quickSort(this.arrayToSort);
+    this.sortedArray = this.quickSort(this.arrayToSort);
   }
 
   quickSort(toSort: number[]): number[] {
@@ -32,14 +32,17 @@ export class QuickSortPageComponent implements OnInit {
     let j = 0;
 
     while (j < arrayCopy.length) {
-      if (arrayCopy[j] > pivot) {
+      if (arrayCopy[j] >= pivot) {
         j++;
       } else if (arrayCopy[j] < pivot) {
         let temp: number;
         i++;
-        temp = arrayCopy[j];
-        arrayCopy[j] = arrayCopy[i];
-        arrayCopy[i] = temp;
+        if (i !== j) {
+          temp = arrayCopy[j];
+          arrayCopy[j] = arrayCopy[i];
+          arrayCopy[i] = temp;
+        }
+
         j++;
       }
 
@@ -56,24 +59,22 @@ export class QuickSortPageComponent implements OnInit {
     let leftSideSorted: number[];
     let rightSideSorted: number[];
 
-    if (leftSide.length > 2) {
+    if (leftSide.length >= 2) {
       leftSideSorted = this.quickSort(leftSide);
     } else {
       leftSideSorted = leftSide;
     }
 
 
-    if (rightSide.length > 2) {
+    if (rightSide.length >= 2) {
       rightSideSorted = this.quickSort(rightSide);
     } else {
       rightSideSorted = rightSide;
     }
 
-    // leftSideSorted = this.quickSort(leftSide);
-    // rightSideSorted = this.quickSort(rightSide);
 
     const result = leftSideSorted.concat(rightSideSorted);
-    result.splice(i, 0, pivot);
+    result.splice((i < 0 ? 0 : i + 1), 0, pivot);
     return result;
 
   }
