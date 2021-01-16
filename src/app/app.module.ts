@@ -9,6 +9,7 @@ import { HeapSortPageComponent } from './sorting/pages/heap-sort-page/heap-sort-
 import { CountingSortPageComponent } from './sorting/pages/counting-sort-page/counting-sort-page.component';
 import {AppRoutingModule} from './app-routing.module';
 import { InsertSortPageComponent } from './sorting/pages/insert-sort/insert-sort-page.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InsertSortPageComponent } from './sorting/pages/insert-sort/insert-sort
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
