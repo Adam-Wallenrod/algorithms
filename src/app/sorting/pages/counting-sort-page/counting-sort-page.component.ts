@@ -22,20 +22,20 @@ export class CountingSortPageComponent implements OnInit {
   }
 
 
-  countingSort(sortArray: number[], rangeFrom: number, rangeTo: number): number[] {
-    console.log('sortArray (1) -->  ', sortArray);
-    this.createArrayOfCounts(sortArray, rangeFrom, rangeTo);
+  countingSort(toSort: number[], rangeFrom: number, rangeTo: number): number[] {
+    console.log('toSort (1) -->  ', toSort);
+    const arrayOfCounts: number[] = this.createArrayOfCounts(toSort, rangeFrom, rangeTo);
+    this.modifyByAddingPrevCounts(arrayOfCounts);
 
-
-    return [];
+    return this.placeInSortedContainer(toSort, arrayOfCounts);
   }
 
 
-  createArrayOfCounts(sortArray: number[], rangeFrom: number, rangeTo: number) {
-    console.log('sortArray (1) -->  ', sortArray);
+  createArrayOfCounts(toSort: number[], rangeFrom: number, rangeTo: number): number[] {
+    console.log('toSort (1) -->  ', toSort);
     const arrayOfCounts: number[] = [];
 
-    // fill in with 0s
+    // fill in with zeros
     let index = rangeFrom;
     while (index <= rangeTo) {
       arrayOfCounts[index] = 0;
@@ -44,15 +44,50 @@ export class CountingSortPageComponent implements OnInit {
 
 
     index = 0;
-    while (index < sortArray.length) {
-      const value = sortArray[index];
+    while (index < toSort.length) {
+      const value = toSort[index];
       arrayOfCounts[value]++;
       index++;
     }
 
     console.log('arrayOfCounts: ', arrayOfCounts);
+    return arrayOfCounts;
+  }
+
+
+  modifyByAddingPrevCounts(modifyArray: number[]) {
+
+    let index = 0;
+    while (index < modifyArray.length - 1) {
+
+      modifyArray[index + 1] = modifyArray[index] + modifyArray[index + 1];
+      index++;
+    }
+    console.log('modifyArray: ', modifyArray);
 
   }
 
+
+  placeInSortedContainer(toSort: number[], modifiedArrayOfCounts: number[]) {
+    const sortedContainer: number[] = [];
+
+    let i = 0;
+    while (i < toSort.length) {
+      const itemIndex = modifiedArrayOfCounts[toSort[i]];
+      sortedContainer[itemIndex] = toSort[i];
+      modifiedArrayOfCounts[toSort[i]]--;
+
+      i++;
+    }
+
+    console.log('sortedContainer: ', sortedContainer);
+
+    return this.removeEmptyValues(sortedContainer);
+  }
+
+
+  removeEmptyValues(arrayToModify: number[]): number[] {
+    return arrayToModify.filter(item => item !== null);
+  }
 
 }
