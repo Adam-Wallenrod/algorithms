@@ -6,6 +6,7 @@ import {BucketSortPageComponent} from './sorting/pages/bucket-sort-page/bucket-s
 import {HeapSortPageComponent} from './sorting/pages/heap-sort-page/heap-sort-page.component';
 import {CountingSortPageComponent} from './sorting/pages/counting-sort-page/counting-sort-page.component';
 import {InsertSortPageComponent} from './sorting/pages/insert-sort/insert-sort-page.component';
+import {BubbleSortPageComponent} from './sorting/pages/bubble-sort-page/bubble-sort-page.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'quick-sort', component: QuickSortPageComponent },
   { path: 'bucket-sort', component: BucketSortPageComponent },
   { path: 'heap-sort', component: HeapSortPageComponent },
-  { path: 'counting-sort', component: CountingSortPageComponent }
+  { path: 'counting-sort', component: CountingSortPageComponent },
+  { path: 'bubble-sort', component: BubbleSortPageComponent }
 ];
 
 

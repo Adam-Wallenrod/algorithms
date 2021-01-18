@@ -10,6 +10,7 @@ import { CountingSortPageComponent } from './sorting/pages/counting-sort-page/co
 import {AppRoutingModule} from './app-routing.module';
 import { InsertSortPageComponent } from './sorting/pages/insert-sort/insert-sort-page.component';
 import {FormsModule} from '@angular/forms';
+import { BubbleSortPageComponent } from './sorting/pages/bubble-sort-page/bubble-sort-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     BucketSortPageComponent,
     HeapSortPageComponent,
     CountingSortPageComponent,
-    InsertSortPageComponent
+    InsertSortPageComponent,
+    BubbleSortPageComponent
   ],
   imports: [
     BrowserModule,
