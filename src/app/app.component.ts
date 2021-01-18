@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Queue} from './data-structures/queue/queue';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,22 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    this.createArrays();
+    const newQ: Queue = new Queue([5, 4, 3, 2, 1]);
+    newQ.displayQueue();
+    newQ.enqueue(10);
+    newQ.displayQueue();
+    newQ.dequeue();
+    newQ.displayQueue();
+    newQ.dequeue();
+    newQ.dequeue();
+    newQ.dequeue();
+    newQ.dequeue();
+    newQ.displayQueue();
+    newQ.dequeue();
+    newQ.displayQueue();
+    newQ.dequeue();
+
+
   }
 
 
