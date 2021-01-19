@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Queue} from './data-structures/queue/queue';
+import {Stack} from './data-structures/stack/stack';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,27 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    const newQ: Queue = new Queue([5, 4, 3, 2, 1]);
-    newQ.displayQueue();
-    newQ.enqueue(10);
-    newQ.displayQueue();
-    newQ.dequeue();
-    newQ.displayQueue();
-    newQ.dequeue();
-    newQ.dequeue();
-    newQ.dequeue();
-    newQ.dequeue();
-    newQ.displayQueue();
-    newQ.dequeue();
-    newQ.displayQueue();
-    newQ.dequeue();
-
-
+    const testStack: Stack = new Stack([1, 2, 3, 4 ], 10);
+    console.log('testStack: ', testStack);
+    testStack.add(5);
+    console.log('testStack: ', testStack);
+    testStack.add(6);
+    console.log('testStack: ', testStack);
+    const POPPED_1 = testStack.pop();
+    console.log(`testStack: ${testStack.stack} and popped element ${POPPED_1}` );
+    const POPPED_2 = testStack.pop();
+    console.log('popped: ', POPPED_2);
+    const POPPED_3 = testStack.pop();
+    console.log('popped: ', POPPED_3);
+    const POPPED_4 = testStack.pop();
+    console.log('popped: ', POPPED_4);
+    const POPPED_5 = testStack.pop();
+    console.log('popped: ', POPPED_5);
+    const POPPED_6 =  testStack.pop();
+    console.log('popped: ', POPPED_6);
+    console.log('isEmpty: ', testStack.isEmpty());
+    console.log('testStack: ', testStack.stack);
+    testStack.pop();
   }
 
 
