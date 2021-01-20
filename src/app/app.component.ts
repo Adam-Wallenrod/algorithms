@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Queue} from './data-structures/queue/queue';
 import {Stack} from './data-structures/stack/stack';
+import {Add} from './data-structures/queue/undo';
 
 @Component({
   selector: 'app-root',
@@ -9,34 +10,33 @@ import {Stack} from './data-structures/stack/stack';
 })
 export class AppComponent implements OnInit {
   title = 'sorting-app';
+  addOperations = new Add(2);
+  numberToAdd: number;
 
   constructor() {
   }
 
 
   ngOnInit() {
-    const testStack: Stack = new Stack([1, 2, 3, 4 ], 10);
-    console.log('testStack: ', testStack);
-    testStack.add(5);
-    console.log('testStack: ', testStack);
-    testStack.add(6);
-    console.log('testStack: ', testStack);
-    const POPPED_1 = testStack.pop();
-    console.log(`testStack: ${testStack.stack} and popped element ${POPPED_1}` );
-    const POPPED_2 = testStack.pop();
-    console.log('popped: ', POPPED_2);
-    const POPPED_3 = testStack.pop();
-    console.log('popped: ', POPPED_3);
-    const POPPED_4 = testStack.pop();
-    console.log('popped: ', POPPED_4);
-    const POPPED_5 = testStack.pop();
-    console.log('popped: ', POPPED_5);
-    const POPPED_6 =  testStack.pop();
-    console.log('popped: ', POPPED_6);
-    console.log('isEmpty: ', testStack.isEmpty());
-    console.log('testStack: ', testStack.stack);
-    testStack.pop();
+
   }
+
+
+  addNumber(value: number) {
+    console.log(`Number to add:  ${this.numberToAdd}`);
+    this.addOperations.add(value);
+  }
+
+  undoAdd() {
+    this.addOperations.undo();
+  }
+
+  getAddValue() {
+    return this.addOperations.getValue();
+  }
+
+
+
 
 
   /**

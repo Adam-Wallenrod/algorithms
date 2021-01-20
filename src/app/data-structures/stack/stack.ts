@@ -1,9 +1,11 @@
 export class Stack {
   readonly stack: number[] = [];
   readonly maxSize: number;
+  readonly minSize: number;
 
-  constructor(initialStack: number[], maxSize: number = -1) {
+  constructor(initialStack: number[], maxSize: number = -1, minSize: number = -1) {
     this.maxSize = maxSize;
+    this.minSize = minSize;
 
     if (this.maxSize === -1 || initialStack.length < this.maxSize) {
       this.stack = initialStack;
@@ -35,8 +37,11 @@ export class Stack {
 
 
   public pop(): number {
-    if ( !this.isEmpty() ) {
+    if ( !this.isEmpty() && this.stack.length > this.minSize) {
       return this.stack.pop();
+    } else if (this.stack.length === this.minSize) {
+      console.log('Stack reached it\'s minSize');
+      return null;
     }
     console.log('Stack is already empty');
     return null;
