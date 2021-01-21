@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Queue} from './data-structures/queue/queue';
 import {Stack} from './data-structures/stack/stack';
-import {Add} from './data-structures/queue/undo';
+// import {Add} from './data-structures/queue/undo';
+import {Add, OpsStack, Times} from './data-structures/queue/undo2';
 
 @Component({
   selector: 'app-root',
@@ -10,30 +11,39 @@ import {Add} from './data-structures/queue/undo';
 })
 export class AppComponent implements OnInit {
   title = 'sorting-app';
-  addOperations = new Add(2);
-  numberToAdd: number;
+  // addOperations = new Add(2);
+  // numberToAdd: number;
 
   constructor() {
   }
 
 
   ngOnInit() {
+    const s = new OpsStack();
 
+    s.add( new Add(1));
+    s.add( new Add(1));
+    s.add( new Times(2));
+    console.log('s: ', s);
+
+    s.undo();
+    s.undo();
+    console.log('s: ', s);
   }
 
 
-  addNumber(value: number) {
-    console.log(`Number to add:  ${this.numberToAdd}`);
-    this.addOperations.add(value);
-  }
-
-  undoAdd() {
-    this.addOperations.undo();
-  }
-
-  getAddValue() {
-    return this.addOperations.getValue();
-  }
+  // addNumber(value: number) {
+  //   console.log(`Number to add:  ${this.numberToAdd}`);
+  //   this.addOperations.add(value);
+  // }
+  //
+  // undoAdd() {
+  //   this.addOperations.undo();
+  // }
+  //
+  // getAddValue() {
+  //   return this.addOperations.getValue();
+  // }
 
 
 
