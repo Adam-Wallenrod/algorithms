@@ -59,4 +59,22 @@ export class BinarySearchTree {
 
   }
 
+  /**
+   * Prints all values which builds the Tree
+   * in the ascending order;
+   */
+  public print(): void {
+    this.inOrder(this.root);
+  }
+
+  private inOrder(node: TreeNode) {
+
+    if (node) {
+      this.inOrder(node.leftNode);
+      console.log(node.value);
+      this.inOrder(node.rightNode);
+    }
+
+  }
+
 }

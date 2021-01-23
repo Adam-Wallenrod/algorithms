@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     tree.insert(9);
 
     console.log('tree: ', tree);
+    tree.print();
 
   }
 
