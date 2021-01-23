@@ -3,6 +3,8 @@ import {Queue} from './data-structures/queue/queue';
 import {Stack} from './data-structures/stack/stack';
 // import {Add} from './data-structures/queue/undo';
 import {Add, OpsStack, Times} from './data-structures/queue/undo2';
+import {Tree} from '@angular/router/src/utils/tree';
+import {BinarySearchTree} from './data-structures/tree/BST';
 
 @Component({
   selector: 'app-root',
@@ -19,16 +21,16 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    const s = new OpsStack();
+    const tree = new BinarySearchTree();
+    tree.insert(10);
+    tree.insert(8);
+    tree.insert(11);
+    tree.insert(23);
+    tree.insert(1);
+    tree.insert(9);
 
-    s.add( new Add(1));
-    s.add( new Add(1));
-    s.add( new Times(2));
-    console.log('s: ', s);
+    console.log('tree: ', tree);
 
-    s.undo();
-    s.undo();
-    console.log('s: ', s);
   }
 
 
