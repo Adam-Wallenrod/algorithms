@@ -32,6 +32,8 @@ export class AppComponent implements OnInit {
     console.log('tree: ', tree);
     tree.print();
 
+    this.chainingPromises();
+
   }
 
 
@@ -49,9 +51,6 @@ export class AppComponent implements OnInit {
   // }
 
 
-
-
-
   /**
    * Different way of converting to array
    */
@@ -66,6 +65,24 @@ export class AppComponent implements OnInit {
     // second way :
     const arr2 = [].slice.call(listElements);
     console.log('[].slice.call() --> ', arr2);
+  }
+
+
+  /**
+   * Chaining promises with reduce
+   */
+  async chainingPromises() {
+
+    const promises = [
+
+      async () => 1,
+      async () => 2,
+      async () => 3
+    ];
+
+    const result = await promises.reduce((promise, fn) => promise.then(fn), Promise.resolve(0));
+    console.log('result: ', result);
+
   }
 
 
