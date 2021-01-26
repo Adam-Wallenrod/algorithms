@@ -5,6 +5,7 @@ import {Stack} from './data-structures/stack/stack';
 import {Add, OpsStack, Times} from './data-structures/queue/undo2';
 import {Tree} from '@angular/router/src/utils/tree';
 import {BinarySearchTree} from './data-structures/tree/BST';
+import {Graph} from './data-structures/graph/graph';
 
 @Component({
   selector: 'app-root',
@@ -21,18 +22,37 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    const tree = new BinarySearchTree();
-    tree.insert(10);
-    tree.insert(8);
-    tree.insert(11);
-    tree.insert(23);
-    tree.insert(1);
-    tree.insert(9);
 
-    console.log('tree: ', tree);
-    tree.print();
+    /**
+     * Testing Tree data-structure
+     */
+    // const tree = new BinarySearchTree();
+    // tree.insert(10);
+    // tree.insert(8);
+    // tree.insert(11);
+    // tree.insert(23);
+    // tree.insert(1);
+    // tree.insert(9);
+    //
+    // console.log('tree: ', tree);
+    // tree.print();
 
-    this.chainingPromises();
+    /**
+     *  Testing chaining Promises with reduce() method
+     */
+      // this.chainingPromises();
+
+    const roadGraph = new Graph('roadMap');
+    console.log('roadGraph: ', roadGraph);
+    roadGraph.addNode('Warszawa');
+    roadGraph.addNode('Krakow');
+    roadGraph.addNode('Poznan');
+    roadGraph.addNode('Gdansk');
+
+    roadGraph.displayNodes();
+
+    roadGraph.addLink(1, 2, 400);
+    roadGraph.displayNodes();
 
   }
 
