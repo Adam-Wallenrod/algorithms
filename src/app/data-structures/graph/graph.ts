@@ -42,6 +42,13 @@ export class Graph {
   private graphName: string;
   private rootNode: GraphNode;
 
+  /**
+   * Help variable for deepFirstSearch() method.
+   * Stores ids of already visited.
+   * @private
+   */
+  private alreadyVisited: number[] = [];
+
   constructor(graphName: string) {
     this.graphName = graphName;
 
@@ -81,10 +88,19 @@ export class Graph {
 
 
   deepFirstSearch(node?: GraphNode) {
+
     if (!node) {
       node = this.rootNode;
+      this.alreadyVisited = [];
     }
+
+    if (this.alreadyVisited.some(visitedNodeId => visitedNodeId === node.id)) {
+      return null;
+    }
+
+    this.alreadyVisited.push(node.id);
     console.log(node.name);
+
     const nodeLinks: Link[] = node.getLinks();
     if (nodeLinks) {
       nodeLinks.forEach(link => this.deepFirstSearch(this.getNodeById(link.secondNodeId)));
