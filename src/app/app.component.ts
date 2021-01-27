@@ -42,17 +42,28 @@ export class AppComponent implements OnInit {
      */
       // this.chainingPromises();
 
-    const roadGraph = new Graph('roadMap');
+    const roadGraph = new Graph('roadMap',);
     console.log('roadGraph: ', roadGraph);
-    roadGraph.addNode('Warszawa');
-    roadGraph.addNode('Krakow');
-    roadGraph.addNode('Poznan');
-    roadGraph.addNode('Gdansk');
+    roadGraph.addNode('A');  // id: 1
+    roadGraph.addNode('B');  // id: 2
+    roadGraph.addNode('C');  // id: 3
+    roadGraph.addNode('D');  // id: 4
+    roadGraph.addNode('E');  // id: 5
+    roadGraph.addNode('F');  // id: 6
+    // roadGraph.addNode('G');     // id: 7
+
 
     roadGraph.displayNodes();
 
     roadGraph.addLink(1, 2, 400);
+    roadGraph.addLink(2, 4, 50);
+    roadGraph.addLink(1, 3, 200);
+    roadGraph.addLink(3, 5, 150);
+    roadGraph.addLink(4, 5, 400);
+    roadGraph.addLink(4, 6, 10);
+
     roadGraph.displayNodes();
+    roadGraph.deepFirstSearch();
 
   }
 

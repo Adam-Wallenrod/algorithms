@@ -1,6 +1,6 @@
 export class GraphNode {
 
-  private name: string;
+  public readonly name: string;
   private links: Link[] = [];
   readonly id: number;
 
@@ -15,12 +15,16 @@ export class GraphNode {
     this.links.push(newLink);
   }
 
+  public getLinks(): Link[] {
+    return this.links;
+  }
+
 }
 
 
 export class Link {
-  private weight: number;
-  private secondNodeId: number;
+  readonly weight: number;
+  readonly secondNodeId: number;
 
   constructor(weight: number, secondNodeId: number) {
     this.weight = weight;
@@ -36,13 +40,18 @@ export class Graph {
   private static id = 1;
   private nodes: GraphNode[] = [];
   private graphName: string;
+  private rootNode: GraphNode;
 
   constructor(graphName: string) {
     this.graphName = graphName;
+
   }
 
   public addNode(name: string): void {
     const node: GraphNode = new GraphNode(name, Graph.id);
+    if (!this.rootNode) {
+      this.rootNode = node;
+    }
     this.nodes.push(node);
     Graph.id++;
 
@@ -62,7 +71,7 @@ export class Graph {
 
     // if both provided ids are correct, create a link between nodes
     firstNode.addLink(weight, secondNodeId);
-    secondNode.addLink(weight, firstNodeId);
+    // secondNode.addLink(weight, firstNodeId);
 
   }
 
@@ -70,4 +79,24 @@ export class Graph {
     console.log('all Nodes: ', this.nodes);
   }
 
+
+  deepFirstSearch(node?: GraphNode) {
+    if (!node) {
+      node = this.rootNode;
+    }
+    console.log(node.name);
+    const nodeLinks: Link[] = node.getLinks();
+    if (nodeLinks) {
+      nodeLinks.forEach(link => this.deepFirstSearch(this.getNodeById(link.secondNodeId)));
+    }
+
+  }
+
+
+  getNodeById(id: number): GraphNode {
+    return this.nodes.find(node => node.id === id);
+  }
+
+
 }
+
