@@ -25,24 +25,25 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    const intList: AnyList = AnyList.create();
-    intList.add(1);
-    intList.add(2);
-    intList.add(3);
-    intList.add(4);
-    console.log('intList: ', intList);
-
-    const filtered: AnyList = intList.filter((value) => value > 2);
-    console.log('filtered: ', filtered);
+    // const intList: AnyList = AnyList.create();
+    // intList.add(1);
+    // intList.add(2);
+    // intList.add(3);
+    // intList.add(4);
+    // console.log('intList: ', intList);
+    //
+    // const filtered: AnyList = intList.filter((value) => value > 2);
+    // console.log('filtered: ', filtered);
 
 
     /***************************************************/
     const userList: AnyList = AnyList.create([new User('George'), new User('Jerry') ]);
     userList.add(new User('Elaine'));
-    userList.add(145);
-    userList.add('what am I even doing here?');
+    // userList.add(145);
+    // userList.add('what am I even doing here?');
     console.log('userList: ', userList);
-
+    const filteredUser: AnyList = userList.filter( (user) => user.getName() === 'Jerry');
+    console.log('filteredUser: ', filteredUser);
 
   }
 

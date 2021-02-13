@@ -1,7 +1,7 @@
 export class User {
 
-  age: number = null;
-  name: string;
+  private age: number = null;
+  private name: string;
 
   constructor(name: string) {
     this.name = name;
@@ -14,6 +14,15 @@ export class User {
       throw new Error('passed wrong value for age,');
     }
     this.age = age;
+  }
+
+  public getAge(): number {
+    return this.age;
+  }
+
+
+  public getName(): string {
+    return this.name;
   }
 
 
