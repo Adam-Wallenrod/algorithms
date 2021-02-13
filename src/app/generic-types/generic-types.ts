@@ -1,0 +1,31 @@
+export class AnyList {
+
+  values: any[] = [];
+
+  private constructor(values: any[]) {
+    this.values = this.values.concat(values);
+  }
+
+
+  public static create(values?: any[]): AnyList {
+    return new AnyList(values);
+  }
+
+
+  public add(value: any) {
+    this.values.push(value);
+  }
+
+
+  /**
+   *  Method allowing to call pass another
+   *  method as parameter.
+   */
+  public filter(functionToPass: (value: any) => boolean): AnyList {
+    const zzz = this.values.filter(functionToPass);
+    console.log('filtero: ', zzz);
+    return AnyList.create(this.values.filter(functionToPass));
+  }
+
+
+}
