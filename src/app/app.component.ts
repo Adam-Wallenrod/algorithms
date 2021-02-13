@@ -7,6 +7,7 @@ import {Tree} from '@angular/router/src/utils/tree';
 import {BinarySearchTree} from './data-structures/tree/BST';
 import {Graph} from './data-structures/graph/graph';
 import {AnyList} from './generic-types/generic-types';
+import {User} from './generic-types/user';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,15 @@ export class AppComponent implements OnInit {
 
     const filtered: AnyList = intList.filter((value) => value > 2);
     console.log('filtered: ', filtered);
+
+
+    /***************************************************/
+    const userList: AnyList = AnyList.create([new User('George'), new User('Jerry') ]);
+    userList.add(new User('Elaine'));
+    userList.add(145);
+    userList.add('what am I even doing here?');
+    console.log('userList: ', userList);
+
 
   }
 

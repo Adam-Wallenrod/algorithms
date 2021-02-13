@@ -22,9 +22,12 @@ export class AnyList {
    *  method as parameter.
    */
   public filter(functionToPass: (value: any) => boolean): AnyList {
-    const zzz = this.values.filter(functionToPass);
-    console.log('filtero: ', zzz);
     return AnyList.create(this.values.filter(functionToPass));
+  }
+
+  public toArray(): any[] {
+    return this.values;
+
   }
 
 
