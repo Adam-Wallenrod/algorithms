@@ -26,6 +26,10 @@ export class AppComponent implements OnInit {
     console.log(this.identity<string>('zzz'));
     console.log(this.identityArrow<number[]>([1000000, 2000000, 3000000]));
 
+
+    console.log('random option: ', this.getRandomOption('McRolay ', 1, {burger: 'chickenburger'}));
+
+
   }
 
 
@@ -76,5 +80,20 @@ export class AppComponent implements OnInit {
 
   }
 
+
+  getRandomOption<T, U, V>(one: T, two: U, three: V): T | U | V {
+    // tuple
+    const options: [T, U, V] = [one, two, three];
+    const randomIndex: number = this.getRandomFormRange(0, 2);
+
+    return  options[randomIndex];
+  }
+
+
+  getRandomFormRange(min: number, max: number) {
+    const initNumber = Math.random() * (max - min + 1);
+    const randomNumber: number = Math.floor(initNumber);
+    return randomNumber;
+  }
 
 }
