@@ -25,6 +25,11 @@ export class AnyList {
     return AnyList.create(this.values.filter(functionToPass));
   }
 
+
+  public select (selector: (value: any) => any ): AnyList {
+    return AnyList.create(this.values.map(selector));
+  }
+
   public toArray(): any[] {
     return this.values;
 

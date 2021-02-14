@@ -24,26 +24,28 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
+    const myFirstTuple: [string, string, number] = ['first', 'second', 44];
 
-    // const intList: AnyList = AnyList.create();
-    // intList.add(1);
-    // intList.add(2);
-    // intList.add(3);
-    // intList.add(4);
-    // console.log('intList: ', intList);
-    //
-    // const filtered: AnyList = intList.filter((value) => value > 2);
-    // console.log('filtered: ', filtered);
-
+    console.log('tuple: ', myFirstTuple);
+    console.log('[0]: ', myFirstTuple[0]);
+    console.log('[1]: ', myFirstTuple[1]);
+    console.log('[2]: ', myFirstTuple[2]);
 
     /***************************************************/
-    const userList: AnyList = AnyList.create([new User('George'), new User('Jerry') ]);
-    userList.add(new User('Elaine'));
-    // userList.add(145);
-    // userList.add('what am I even doing here?');
-    console.log('userList: ', userList);
-    const filteredUser: AnyList = userList.filter( (user) => user.getName() === 'Jerry');
-    console.log('filteredUser: ', filteredUser);
+    // const userList: AnyList = AnyList.create([new User('George'), new User('Jerry') ]);
+    // userList.add(new User('Elaine'));
+    // // userList.add(145);
+    // // userList.add('what am I even doing here?');
+    // console.log('userList: ', userList);
+    // const filteredUser: AnyList = userList.filter( (user) => user.getName() === 'Jerry');
+    // console.log('filteredUser: ', filteredUser);
+    // const seinfeldCast: AnyList = userList.select((user) => 'Seinfeld star: ' + user.getName());
+    // console.log('seinfeldCast: ', seinfeldCast);
+    // console.log(seinfeldCast === userList);
+
+
+    console.log(this.identity<string>('zzz'));
+    console.log(this.identityArrow<number[]>([1000000, 2000000, 3000000]));
 
   }
 
@@ -95,6 +97,19 @@ export class AppComponent implements OnInit {
     console.log('result: ', result);
 
   }
+
+
+  /**
+   * An example of the simplest method which
+   * is using Generic Types.
+   *
+   * @param input
+   */
+  identity<T>(input: T): T {
+    return input;
+  }
+
+  identityArrow = <T>(input: T): T => input;
 
 
 }
